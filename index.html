@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NURS FF • Free Fire Shop</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at 20% 10%,#ff7b0030,transparent 30%),
+radial-gradient(circle at 80% 20%,#7b2cff30,transparent 30%),
+#05070d;
+color:white;
+min-height:100vh;
+}
+
+.container{width:min(1150px,94%);margin:auto}
+
+header{
+margin-top:18px;
+padding:25px;
+border-radius:25px;
+background:linear-gradient(135deg,#161b2d,#090c15);
+border:1px solid #ffffff18;
+box-shadow:0 20px 60px #0008;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px
+}
+
+.logo{font-size:32px;font-weight:1000}
+.logo span{color:#ffb000}
+
+.headerInfo{
+text-align:right;
+color:#aab3c5;
+font-size:14px;
+line-height:1.7
+}
+
+.hero{
+margin-top:22px;
+padding:45px 30px;
+border-radius:30px;
+background:
+linear-gradient(90deg,#090b13dd,#0b0e18aa),
+url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+border:1px solid #ffffff18;
+box-shadow:0 25px 70px #0009
+}
+
+.hero h1{
+font-size:clamp(35px,7vw,70px);
+font-weight:1000
+}
+
+.hero h1 span{color:#ffb000}
+
+.hero p{
+margin-top:12px;
+font-size:18px;
+color:#c7cedd
+}
+
+.badges{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:22px
+}
+
+.badge{
+padding:10px 15px;
+border-radius:999px;
+background:#ffffff0c;
+border:1px solid #ffffff16
+}
+
+h2{
+margin:35px 0 17px;
+font-size:28px
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:17px
+}
+
+.product{
+padding:23px;
+border-radius:22px;
+background:linear-gradient(145deg,#141a2a,#0b0f19);
+border:1px solid #ffffff14;
+box-shadow:0 12px 35px #0007;
+transition:.25s
+}
+
+.product:hover{
+transform:translateY(-6px);
+border-color:#ffb00066
+}
+
+.icon{font-size:45px}
+
+.productName{
+font-size:20px;
+font-weight:900;
+margin-top:12px
+}
+
+.price{
+font-size:29px;
+font-weight:1000;
+color:#ffc400;
+margin:13px 0 18px
+}
+
+button{
+width:100%;
+border:0;
+padding:14px 18px;
+border-radius:13px;
+font-size:15px;
+font-weight:900;
+cursor:pointer;
+background:linear-gradient(135deg,#ffc400,#ff8a00);
+color:#111;
+transition:.2s
+}
+
+button:hover{
+transform:scale(1.02)
+}
+
+.green{
+background:linear-gradient(135deg,#00e676,#00a86b);
+color:white
+}
+
+.infoGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:18px
+}
+
+.info{
+padding:20px;
+border-radius:18px;
+background:#101623;
+border:1px solid #ffffff12
+}
+
+.info b{
+display:block;
+font-size:18px;
+margin-bottom:6px
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:10;
+background:#000c;
+padding:15px;
+align-items:center;
+justify-content:center
+}
+
+.modalBox{
+width:min(570px,100%);
+max-height:94vh;
+overflow:auto;
+padding:25px;
+border-radius:24px;
+background:#0d1320;
+border:1px solid #ffffff20;
+box-shadow:0 30px 100px #000
+}
+
+.close{
+float:right;
+width:auto;
+padding:8px 12px;
+background:#222c40;
+color:white
+}
+
+label{
+display:block;
+margin-top:16px;
+margin-bottom:7px;
+font-weight:bold;
+color:#dce3f1
+}
+
+input{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #303c55;
+background:#080d17;
+color:white;
+outline:none
+}
+
+.payments{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px
+}
+
+.pay{
+padding:14px 5px;
+border-radius:12px;
+background:#151d2d;
+border:1px solid #303b52;
+text-align:center;
+cursor:pointer;
+font-weight:bold
+}
+
+.pay.active{
+border-color:#ffc400;
+background:#302811
+}
+
+.qr{
+display:block;
+width:min(300px,100%);
+margin:15px auto;
+background:white;
+padding:8px;
+border-radius:15px
+}
+
+.discount{
+margin-top:12px;
+padding:15px;
+border-radius:14px;
+background:#151e30
+}
+
+.total{
+font-size:25px;
+font-weight:1000;
+color:#ffc400;
+margin:15px 0
+}
+
+.result{
+margin-top:15px;
+padding:15px;
+border-radius:14px;
+background:#101b2a;
+line-height:1.7
+}
+
+.small{
+font-size:13px;
+color:#8f9bb0;
+margin-top:8px
+}
+
+footer{
+text-align:center;
+color:#778298;
+padding:35px 0
+}
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+align-items:flex-start
+}
+
+.headerInfo{text-align:left}
+
+.payments{
+grid-template-columns:1fr
+}
+
+.hero{
+padding:35px 22px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+🔥 NURS <span>FF</span>
+</div>
+
+<div class="headerInfo">
+📞 0551141992<br>
+✈️ @nurs_ff9928
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<h1>
+FREE FIRE <span>SHOP</span>
+</h1>
+
+<p>
+Алмаздар жана ваучерлерди тез жана ыңгайлуу алыңыз.
+</p>
+
+<div class="badges">
+
+<div class="badge">💎 Арзан баалар</div>
+<div class="badge">⚡ Тез тейлөө</div>
+<div class="badge">🔒 Коопсуз заказ</div>
+
+</div>
+
+</section>
+
+
+<h2>💎 Товарлар</h2>
+
+<div class="products" id="products"></div>
+
+
+<h2>📞 Байланыш</h2>
+
+<div class="infoGrid">
+
+<div class="info">
+<b>📱 Телефон</b>
+0551141992
+</div>
+
+<div class="info">
+<b>🟡 MegaPay</b>
+0551141992
+</div>
+
+<div class="info">
+<b>🟢 MBANK</b>
+0553567079
+</div>
+
+<div class="info">
+<b>🔵 Balance KG</b>
+0551141992
+</div>
+
+<div class="info">
+<b>✈️ Telegram</b>
+@nurs_ff9928
+</div>
+
+<div class="info">
+<b>📲 WhatsApp</b>
+0220920333
+</div>
+
+</div>
+
+
+<footer>
+© 2026 NURS FF SHOP
+</footer>
+
+</div>
+
+
+
+<!-- ORDER -->
+
+<div class="modal" id="modal">
+
+<div class="modalBox">
+
+<button class="close" onclick="closeModal()">✕</button>
+
+<h2 style="margin-top:0">
+🛒 Заказ берүү
+</h2>
+
+<div id="selected" class="result"></div>
+
+
+<label>
+🎮 Free Fire Player ID
+</label>
+
+<input id="playerId" placeholder="Player ID">
+
+
+<label>
+💳 Төлөм ыкмасы
+</label>
+
+<div class="payments">
+
+<div class="pay"
+onclick="pay('MBANK')"
+id="p-mbank">
+
+🟢 MBANK
+
+</div>
+
+
+<div class="pay"
+onclick="pay('Balance KG')"
+id="p-balance">
+
+🔵 Balance KG
+
+</div>
+
+
+<div class="pay"
+onclick="pay('MegaPay')"
+id="p-mega">
+
+🟡 MegaPay
+
+</div>
+
+</div>
+
+
+<div id="paymentInfo" class="result">
+
+Төлөм ыкмасын тандаңыз.
+
+</div>
+
+
+<label>
+🎁 Промо код
+</label>
+
+<div class="discount">
+
+<input
+id="promo"
+placeholder="Промо кодду жазыңыз">
+
+<button
+style="margin-top:8px"
+onclick="applyPromo()">
+
+Промону колдонуу
+
+</button>
+
+<div
+id="promoResult"
+class="small">
+</div>
+
+</div>
+
+
+<div class="total">
+
+Жыйынтык:
+<span id="total">0</span> сом
+
+</div>
+
+
+<label>
+📸 Төлөмдүн чеги
+</label>
+
+<input
+id="receipt"
+type="file"
+accept="image/*">
+
+
+<div class="small">
+
+Чекти тандап, андан кийин
+«Чекти админге жөнөтүү» баскычын басыңыз.
+
+</div>
+
+
+<button
+style="margin-top:17px"
+class="green"
+onclick="sendToAdmin()">
+
+📤 Чекти админге жөнөтүү
+
+</button>
+
+
+<div id="orderResult"></div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+const products=[
+
+{
+name:"100 алмаз",
+price:89,
+icon:"💎"
+},
+
+{
+name:"310 алмаз",
+price:250,
+icon:"💎"
+},
+
+{
+name:"520 алмаз",
+price:390,
+icon:"💎"
+},
+
+{
+name:"1060 алмаз",
+price:790,
+icon:"💎"
+},
+
+{
+name:"2180 алмаз",
+price:1590,
+icon:"💎"
+},
+
+{
+name:"5600 алмаз",
+price:3990,
+icon:"💎"
+},
+
+{
+name:"11500 алмаз",
+price:7990,
+icon:"💎"
+},
+
+{
+name:"Венера Лайт ваучер",
+price:43,
+icon:"🎟️"
+},
+
+{
+name:"450 алмаз ваучер",
+price:170,
+icon:"🎟️"
+},
+
+{
+name:"Айлык ваучер",
+price:899,
+icon:"📅"
+}
+
+];
+
+
+let selected=null;
+let payment=null;
+let finalPrice=0;
+let promoUsed=false;
+
+
+const productsEl=
+document.getElementById("products");
+
+
+products.forEach((p,i)=>{
+
+productsEl.innerHTML+=`
+
+<div class="product">
+
+<div class="icon">
+${p.icon}
+</div>
+
+<div class="productName">
+${p.name}
+</div>
+
+<div class="price">
+${p.price} сом
+</div>
+
+<button onclick="openOrder(${i})">
+Сатып алуу
+</button>
+
+</div>
+
+`;
+
+});
+
+
+
+function openOrder(i){
+
+selected=products[i];
+
+finalPrice=selected.price;
+
+payment=null;
+
+promoUsed=false;
+
+document.getElementById("modal")
+.style.display="flex";
+
+
+document.getElementById("selected")
+.innerHTML=`
+
+<b>
+${selected.icon} ${selected.name}
+</b>
+
+<br>
+
+Баасы:
+${selected.price} сом
+
+`;
+
+
+document.getElementById("total")
+.innerText=finalPrice;
+
+document.getElementById("playerId").value="";
+
+document.getElementById("promo").value="";
+
+document.getElementById("receipt").value="";
+
+document.getElementById("promoResult").innerText="";
+
+document.getElementById("paymentInfo").innerHTML=
+"Төлөм ыкмасын тандаңыз.";
+
+document.getElementById("orderResult").innerHTML="";
+
+document.querySelectorAll(".pay")
+.forEach(x=>x.classList.remove("active"));
+
+}
+
+
+
+function closeModal(){
+
+document.getElementById("modal")
+.style.display="none";
+
+}
+
+
+
+function pay(type){
+
+payment=type;
+
+document.querySelectorAll(".pay")
+.forEach(x=>x.classList.remove("active"));
+
+
+if(type==="MBANK"){
+
+document.getElementById("p-mbank")
+.classList.add("active");
+
+document.getElementById("paymentInfo")
+.innerHTML=
+
+"🟢 <b>MBANK</b><br><br>"+
+"Номер: <b>0553567079</b><br>"+
+"Сумма: <b>"+finalPrice+" сом</b>";
+
+}
+
+
+if(type==="Balance KG"){
+
+document.getElementById("p-balance")
+.classList.add("active");
+
+document.getElementById("paymentInfo")
+.innerHTML=
+
+"🔵 <b>Balance KG</b><br><br>"+
+"Номер: <b>0551141992</b><br>"+
+"Сумма: <b>"+finalPrice+" сом</b>";
+
+}
+
+
+if(type==="MegaPay"){
+
+document.getElementById("p-mega")
+.classList.add("active");
+
+document.getElementById("paymentInfo")
+.innerHTML=
+
+"🟡 <b>MegaPay</b><br><br>"+
+"Номер: <b>0551141992</b><br>"+
+"Сумма: <b>"+finalPrice+" сом</b>";
+
+}
+
+}
+
+
+
+function applyPromo(){
+
+const code=
+document.getElementById("promo")
+.value.trim();
+
+
+if(code==="nurs777" && !promoUsed){
+
+finalPrice=
+Math.max(0,selected.price-5);
+
+promoUsed=true;
+
+document.getElementById("total")
+.innerText=finalPrice;
+
+document.getElementById("promoResult")
+.innerHTML=
+"✅ Промокод кабыл алынды! −5 сом";
+
+}
+
+else if(code==="nurs777" && promoUsed){
+
+document.getElementById("promoResult")
+.innerText=
+"Промокод буга чейин колдонулду.";
+
+}
+
+else{
+
+finalPrice=selected.price;
+
+document.getElementById("total")
+.innerText=finalPrice;
+
+document.getElementById("promoResult")
+.innerText=
+"❌ Промокод туура эмес.";
+
+}
+
+}
+
+
+
+function sendToAdmin(){
+
+const id=
+document.getElementById("playerId")
+.value.trim();
+
+const receipt=
+document.getElementById("receipt")
+.files[0];
+
+
+if(!id){
+
+alert("🎮 Player ID жазыңыз.");
+
+return;
+
+}
+
+
+if(!payment){
+
+alert("💳 Төлөм ыкмасын тандаңыз.");
+
+return;
+
+}
+
+
+if(!receipt){
+
+alert("📸 Чектин сүрөтүн жүктөңүз.");
+
+return;
+
+}
+
+
+const order=
+"FF-"+Date.now()
+.toString()
+.slice(-8);
+
+
+const message=
+
+"🧾 NURS FF SHOP — ЗАКАЗ\n\n"+
+
+"📌 Заказ №: "+order+"\n"+
+
+"🎮 Player ID: "+id+"\n"+
+
+"💎 Товар: "+selected.name+"\n"+
+
+"💰 Сумма: "+finalPrice+" сом\n"+
+
+"💳 Төлөм: "+payment+"\n\n"+
+
+"📸 Чек тиркелет.";
+
+
+const whatsappUrl=
+
+"https://wa.me/996220920333?text="+
+encodeURIComponent(message);
+
+
+document.getElementById("orderResult")
+.innerHTML=`
+
+<div class="result">
+
+✅ <b>Заказ даяр!</b>
+
+<br><br>
+
+Заказ №:
+<b>${order}</b>
+
+<br>
+
+Статус:
+<b>Админге жөнөтүлүүдө</b>
+
+<br><br>
+
+<button onclick="openWhatsApp()">
+
+📲 WhatsApp — Админге жөнөтүү
+
+</button>
+
+<p class="small">
+
+WhatsApp ачылгандан кийин
+чектин сүрөтүн ушул чатка тиркеп,
+«Жөнөтүү» басыңыз.
+
+</p>
+
+</div>
+
+`;
+
+
+window.currentWhatsApp=whatsappUrl;
+
+}
+
+
+
+function openWhatsApp(){
+
+window.open(
+window.currentWhatsApp,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
